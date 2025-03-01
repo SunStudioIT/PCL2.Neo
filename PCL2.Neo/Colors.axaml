@@ -43,7 +43,7 @@
             <SolidColorBrush Color="#55ffffff" x:Key="ColorBrushHalfWhite" />
             <SolidColorBrush Color="#bbffffff" x:Key="ColorBrushSemiWhite" />
             <SolidColorBrush Color="#ffffff" x:Key="ColorBrushWhite" />
-            <SolidColorBrush Color="Transparent" x:Key="ColorBrushTransparent" />
+            <SolidColorBrush Color="#00ffffff" x:Key="ColorBrushTransparent" />
             <SolidColorBrush Color="#01eaf2fe" x:Key="ColorBrushSemiTransparent" />
             <SolidColorBrush Color="#d2ffffff" x:Key="ColorBrushBackgroundTransparentSidebar" />
         </ResourceDictionary>
@@ -87,10 +87,10 @@
             <SolidColorBrush x:Key="ColorBrushRedBack">#80fbdddd</SolidColorBrush>
             <SolidColorBrush x:Key="ColorBrushRedLight">#ff4c4c</SolidColorBrush>
             <SolidColorBrush x:Key="ColorBrushRedDark">#ce2111</SolidColorBrush>
-            <SolidColorBrush Color="#55ffffff" x:Key="ColorBrushHalfWhite" />
+            <SolidColorBrush Color="#555a5a5a" x:Key="ColorBrushHalfWhite" />
             <SolidColorBrush Color="#bbffffff" x:Key="ColorBrushSemiWhite" />
             <SolidColorBrush Color="#ffffff" x:Key="ColorBrushWhite" />
-            <SolidColorBrush Color="Transparent" x:Key="ColorBrushTransparent" />
+            <SolidColorBrush Color="#00434343" x:Key="ColorBrushTransparent" />
             <SolidColorBrush Color="#01eaf2fe" x:Key="ColorBrushSemiTransparent" />
             <SolidColorBrush Color="#eb2b2b2b" x:Key="ColorBrushBackgroundTransparentSidebar" />
         </ResourceDictionary>

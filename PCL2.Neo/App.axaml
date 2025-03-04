@@ -28,6 +28,7 @@
         <StyleInclude Source="avares://PCL2.Neo/Controls/MyRadioButton.axaml" />
         <StyleInclude Source="avares://PCL2.Neo/Controls/MyCard.axaml" />
         <StyleInclude Source="avares://PCL2.Neo/Controls/MyButton.axaml" />
+        <StyleInclude Source="avares://PCL2.Neo/Controls/MyLoading.axaml" />
 
         <!--  TextBlock  -->
         <Style Selector="TextBlock">

@@ -175,7 +175,7 @@ public class MyIconButton : Button
         switch (IconTheme)
         {
             case IconThemes.Color:
-                _pathIcon.Fill = Application.Current!.Resources["ColorBrush5"] as SolidColorBrush;
+                _pathIcon.Fill = (SolidColorBrush?)Application.Current!.Resources["ColorBrush5"];
                 break;
             case IconThemes.White:
                 _pathIcon.Fill = (SolidColorBrush)new MyColor(234, 242, 254);

@@ -17,6 +17,7 @@ namespace PCL2.Neo.Animations
         public double? ValueBefore { get; set; }
         public double ValueAfter { get; set; }
         public Easing Easing { get; set; }
+        public bool Wait { get; set; } = false;
 
         public TranslateTransformXAnimation(Animatable control, double valueAfter) : this(
             control, valueAfter, new LinearEasing())

@@ -17,13 +17,19 @@
     xmlns:pc="using:PCL2.Neo.Controls"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
-        <Border BoxShadow="0 0 15 2 #50000000"
-                Margin="18"
-                CornerRadius="8" />
+        <Border
+            BoxShadow="0 0 15 2 #50000000"
+            CornerRadius="8"
+            Margin="18" />
         <Border
             CornerRadius="15,15,8,8"
             Margin="18"
             Name="MainBorder">
+            <Border.Transitions>
+                <Transitions>
+                    <BrushTransition Duration="0:0:0.2" Property="Background" />
+                </Transitions>
+            </Border.Transitions>
             <Border ClipToBounds="True" CornerRadius="8">
                 <Grid RowDefinitions="Auto 1*">
                     <!--  title  -->
@@ -191,18 +197,40 @@
                             <pc:MyButton
                                 ColorType="Normal"
                                 Height="50"
-                                Margin="10" />
+                                Margin="10"
+                                Text="普通按钮" />
                             <pc:MyButton
+                                Click="Button_OnClick"
                                 ColorType="Highlight"
                                 Height="50"
-                                Margin="10" />
+                                Margin="10"
+                                Text="高亮按钮" />
                             <pc:MyButton
+                                Click="Button2_OnClick"
                                 ColorType="Red"
                                 Height="50"
-                                Margin="10" />
+                                Margin="10"
+                                Text="红色按钮" />
+                            <pc:MyButton Height="50" Margin="10">
+                                <Run Text="PCL2.Neo 也支持了" />
+                                <Run
+                                    FontWeight="Bold"
+                                    Foreground="#ff4c4c"
+                                    Text="Inline 富文本！" />
+                                <LineBreak />
+                                <Run Text="为什么这里有个" />
+                                <InlineUIContainer>
+                                    <Image Source="avares://PCL2.Neo/Assets/Icon.ico" Width="20" />
+                                </InlineUIContainer>
+                                <Run Text="图标？" />
+                            </pc:MyButton>
+                            <pc:MyLoading
+                                Height="150"
+                                Name="TestLoading"
+                                Width="150" />
                         </StackPanel>
                     </Grid>
-                  
+
                 </Grid>
             </Border>
         </Border>

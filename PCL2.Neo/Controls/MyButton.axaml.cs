@@ -1,10 +1,12 @@
 using Avalonia;
 using Avalonia.Animation.Easings;
 using Avalonia.Controls;
+using Avalonia.Controls.Documents;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Media;
+using Avalonia.Metadata;
 using PCL2.Neo.Animations;
 using PCL2.Neo.Helpers;
 using PCL2.Neo.Utils;
@@ -12,7 +14,7 @@ using System;
 
 namespace PCL2.Neo.Controls;
 
-[PseudoClasses(":normal", "highlight", "red")]
+[PseudoClasses(":normal", ":highlight", ":red")]
 public class MyButton : Button
 {
     private Border? _panFore;
@@ -21,12 +23,18 @@ public class MyButton : Button
     public MyButton()
     {
         _animation = new();
+        Inlines = new InlineCollection();
     }
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
         _panFore = e.NameScope.Find<Border>("PanFore")!;
+
+        if (Inlines!.Count == 0 && string.IsNullOrEmpty(Text))
+        {
+            Text = "Button";
+        }
 
         SetPseudoClasses();
     }
@@ -61,6 +69,16 @@ public class MyButton : Button
     }
 
     public int Uuid = CoreUtils.GetUuid();
+
+    public static readonly StyledProperty<InlineCollection?> InlinesProperty = AvaloniaProperty.Register<MyButton, InlineCollection?>(
+        nameof(Inlines), new InlineCollection());
+
+    [Content]
+    public InlineCollection? Inlines
+    {
+        get => GetValue(InlinesProperty);
+        set => SetValue(InlinesProperty, value);
+    }
 
     public static readonly StyledProperty<string> TextProperty = AvaloniaProperty.Register<MyButton, string>(
         nameof(Text));

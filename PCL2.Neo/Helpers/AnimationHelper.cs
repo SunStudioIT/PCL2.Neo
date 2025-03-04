@@ -11,18 +11,66 @@ public class AnimationHelper(List<IAnimation> animations)
 {
     public List<IAnimation> Animations { get; set; } = animations;
     public List<Task> Tasks { get; } = new List<Task>();
+    public bool Loop { get; set; } = false;
 
     public AnimationHelper() : this([]){}
 
     public async Task RunAsync()
     {
         Tasks.Clear();
-        foreach (IAnimation animation in Animations)
+
+        if (Loop)
         {
-            Tasks.Add(animation.RunAsync());
+            while (true)
+            {
+                Tasks.Clear();
+                await RunAsyncCore();
+                if (!Loop) return;
+            }
         }
 
-        await Task.WhenAll(Tasks);
+        await RunAsyncCore();
+    }
+
+    private async Task RunAsyncCore()
+    {
+        // 根据 Wait 进行动画分组
+        var groupedAnimations = new List<List<IAnimation>>();
+        var currentGroup = new List<IAnimation>();
+        foreach (IAnimation animation in Animations)
+        {
+            if (animation.Wait)
+            {
+                if (currentGroup.Count > 0)
+                {
+                    groupedAnimations.Add(new List<IAnimation>(currentGroup));
+                    currentGroup.Clear();
+                    continue;
+                }
+                currentGroup.Add(animation);
+            }
+            else
+            {
+                currentGroup.Add(animation);
+            }
+        }
+
+        if (currentGroup.Count > 0)
+        {
+            groupedAnimations.Add(new List<IAnimation>(currentGroup));
+        }
+
+        currentGroup.Clear();
+
+        foreach (List<IAnimation> list in groupedAnimations)
+        {
+            foreach (IAnimation animation in list)
+            {
+                Tasks.Add(animation.RunAsync());
+            }
+
+            await Task.WhenAll(Tasks);
+        }
     }
 
     public void Cancel()

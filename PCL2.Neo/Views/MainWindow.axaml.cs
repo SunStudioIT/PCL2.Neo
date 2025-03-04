@@ -4,6 +4,8 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using PCL2.Neo.Animations;
+using PCL2.Neo.Animations.Easings;
+using PCL2.Neo.Controls;
 using PCL2.Neo.Helpers;
 using System;
 using System.Threading.Tasks;
@@ -41,9 +43,9 @@ public partial class MainWindow : Window
     {
         var animation = new AnimationHelper(
         [
-            new OpacityAnimation(this, TimeSpan.FromMilliseconds(250), TimeSpan.FromMilliseconds(100), 0d, 1d),
-            new TranslateTransformYAnimation(this, TimeSpan.FromMilliseconds(600), TimeSpan.FromMilliseconds(100), 60d, 0d, new BackEaseOut()),
-            new RotateTransformAngleAnimation(this, TimeSpan.FromMilliseconds(500), TimeSpan.FromMilliseconds(100), -4d, 0d, new BackEaseOut())
+            new OpacityAnimation(this, TimeSpan.FromMilliseconds(250), 0d, 1d),
+            new TranslateTransformYAnimation(this, TimeSpan.FromMilliseconds(600), 60d, 0d, new MyBackEaseOut(EasePower.Weak)),
+            new RotateTransformAngleAnimation(this, TimeSpan.FromMilliseconds(500), -4d, 0d, new MyBackEaseOut(EasePower.Weak))
         ]);
         await animation.RunAsync();
     }
@@ -56,13 +58,23 @@ public partial class MainWindow : Window
         {
             var animation = new AnimationHelper(
             [
-                new OpacityAnimation(this.MainBorder, TimeSpan.FromMilliseconds(140), TimeSpan.FromMilliseconds(40), 0d, new QuadraticEaseOut()),
-                new ScaleTransformScaleXAnimation(this.MainBorder, TimeSpan.FromMilliseconds(180), 0.88d),
-                new ScaleTransformScaleYAnimation(this.MainBorder, TimeSpan.FromMilliseconds(180), 0.88d),
-                new TranslateTransformYAnimation(this.MainBorder, TimeSpan.FromMilliseconds(180), 20d, new QuadraticEaseOut()),
-                new RotateTransformAngleAnimation(this.MainBorder, TimeSpan.FromMilliseconds(180), 0.6d, new QuadraticEaseInOut())
+                new OpacityAnimation(this, TimeSpan.FromMilliseconds(140), TimeSpan.FromMilliseconds(40), 0d, new QuadraticEaseOut()),
+                new ScaleTransformScaleXAnimation(this, TimeSpan.FromMilliseconds(180), 0.88d),
+                new ScaleTransformScaleYAnimation(this, TimeSpan.FromMilliseconds(180), 0.88d),
+                new TranslateTransformYAnimation(this, TimeSpan.FromMilliseconds(180), 20d, new QuadraticEaseOut()),
+                new RotateTransformAngleAnimation(this, TimeSpan.FromMilliseconds(180), 0.6d, new QuadraticEaseInOut())
             ]);
             await animation.RunAsync();
         }
+    }
+
+    private void Button_OnClick(object? sender, RoutedEventArgs e)
+    {
+        this.TestLoading.State = MyLoading.LoadingState.Loading;
+    }
+
+    private void Button2_OnClick(object? sender, RoutedEventArgs e)
+    {
+        this.TestLoading.State = MyLoading.LoadingState.Error;
     }
 }

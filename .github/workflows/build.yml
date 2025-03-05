@@ -54,6 +54,7 @@ jobs:
                   sudo su
                   pupnet --runtime linux-x64 --kind appimage -o PCL2.Neo.linux.x64.AppImage -y --app-version ${{ needs.time.outputs.y }}.${{ needs.time.outputs.md }}.${{ needs.time.outputs.hm }}
                   pupnet --runtime linux-arm64 --kind appimage -o PCL2.Neo.linux.arm64.AppImage -y --app-version ${{ needs.time.outputs.y }}.${{ needs.time.outputs.md }}.${{ needs.time.outputs.hm }}
+              continue-on-error: true
             - name: Build-MacOsApp
               run: |
                   cd ./PCL2.Neo

@@ -11,6 +11,7 @@
 
     <Style Selector="controls|MyLoading">
         <Setter Property="Foreground" Value="{DynamicResource ColorBrush3}" />
+        <Setter Property="Text" Value="Loading" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid
@@ -107,10 +108,10 @@
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         Margin="0,10,0,0"
-                        Text="Loading"
+                        Name="LabText"
+                        Text="{TemplateBinding Text}"
                         TextWrapping="Wrap"
-                        VerticalAlignment="Top"
-                        x:Name="LabText" />
+                        VerticalAlignment="Top" />
                 </Grid>
             </ControlTemplate>
         </Setter>

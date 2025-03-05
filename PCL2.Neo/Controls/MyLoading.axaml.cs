@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace PCL2.Neo.Controls
 {
-    [PseudoClasses(":unloaded", ":loading", ":stopped", ":error")]
+    [PseudoClasses(":loading", ":error")]
     public class MyLoading : TemplatedControl
     {
         private AnimationHelper _animation;
@@ -38,20 +38,56 @@ namespace PCL2.Neo.Controls
             _pathRight = e.NameScope.Find<Path>("PathRight");
 
             SetPseudoClasses();
-
+            RefreshText();
             StartAnimation();
+        }
+
+        public static readonly StyledProperty<string> TextProperty = AvaloniaProperty.Register<MyLoading, string>(
+            nameof(Text));
+
+        public string Text
+        {
+            get => GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
+        }
+
+        public static readonly StyledProperty<string> TextErrorProperty = AvaloniaProperty.Register<MyLoading, string>(
+            nameof(TextError),
+            "加载失败");
+
+        public string TextError
+        {
+            get => GetValue(TextErrorProperty);
+            set
+            {
+                SetValue(TextErrorProperty, value);
+                RefreshText();
+            }
+        }
+
+        public static readonly StyledProperty<string> TextLoadingProperty = AvaloniaProperty.Register<MyLoading, string>(
+            nameof(TextLoading),
+            "加载中");
+
+        public string TextLoading
+        {
+            get => GetValue(TextLoadingProperty);
+            set
+            {
+                SetValue(TextLoadingProperty, value);
+                RefreshText();
+            }
         }
 
         public enum LoadingState
         {
-            Unloaded = -1,
-            Loading = 0,
-            Stopped = 1,
-            Error = 2
+            Loading,
+            Error
         }
 
         public static readonly StyledProperty<LoadingState> StateProperty = AvaloniaProperty.Register<MyLoading, LoadingState>(
-            nameof(State), LoadingState.Loading);
+            nameof(State),
+            LoadingState.Loading);
 
         public LoadingState State
         {
@@ -60,6 +96,7 @@ namespace PCL2.Neo.Controls
             {
                 SetValue(StateProperty, value);
                 SetPseudoClasses();
+                RefreshText();
             }
         }
 
@@ -146,24 +183,27 @@ namespace PCL2.Neo.Controls
 
         private void SetPseudoClasses()
         {
-            PseudoClasses.Remove(":unloaded");
             PseudoClasses.Remove(":loading");
-            PseudoClasses.Remove(":stopped");
             PseudoClasses.Remove(":error");
-            switch (State)
+            if (State == LoadingState.Loading)
             {
-                case LoadingState.Unloaded:
-                    PseudoClasses.Set(":unloaded", true);
-                    break;
-                case LoadingState.Loading:
-                    PseudoClasses.Set(":loading", true);
-                    break;
-                case LoadingState.Stopped:
-                    PseudoClasses.Set(":stopped", true);
-                    break;
-                case LoadingState.Error:
-                    PseudoClasses.Set(":error", true);
-                    break;
+                PseudoClasses.Set(":loading", true);
+            }
+            else
+            {
+                PseudoClasses.Set(":error", true);
+            }
+        }
+
+        private void RefreshText()
+        {
+            if (State == LoadingState.Loading)
+            {
+                this.Text = TextLoading;
+            }
+            else
+            {
+                this.Text = TextError;
             }
         }
     }

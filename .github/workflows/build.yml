@@ -32,13 +32,17 @@ jobs:
                   echo "The current time is: ${{ steps.date.outputs.time }}"
 
     build:
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         needs: time
         steps:
             - name: Checkout
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
+            - name: Setup dotnet
+              uses: actions/setup-dotnet@v4
+              with:
+                  dotnet-version: '9.x'
             - name: Dependency
               run: |
                   dotnet tool install -g KuiperZone.PupNet
@@ -50,6 +54,7 @@ jobs:
                   sudo su
                   pupnet --runtime linux-x64 --kind appimage -o PCL2.Neo.linux.x64.AppImage -y --app-version ${{ needs.time.outputs.y }}.${{ needs.time.outputs.md }}.${{ needs.time.outputs.hm }}
                   pupnet --runtime linux-arm64 --kind appimage -o PCL2.Neo.linux.arm64.AppImage -y --app-version ${{ needs.time.outputs.y }}.${{ needs.time.outputs.md }}.${{ needs.time.outputs.hm }}
+              continue-on-error: true
             - name: Build-MacOsApp
               run: |
                   cd ./PCL2.Neo

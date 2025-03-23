@@ -24,19 +24,8 @@
     <Application.Styles>
         <FluentTheme />
 
-        <StyleInclude Source="avares://PCL2.Neo/Controls/MyIconButton.axaml" />
-        <StyleInclude Source="avares://PCL2.Neo/Controls/MyRadioButton.axaml" />
-        <StyleInclude Source="avares://PCL2.Neo/Controls/MyCard.axaml" />
-        <StyleInclude Source="avares://PCL2.Neo/Controls/MyButton.axaml" />
-        <StyleInclude Source="avares://PCL2.Neo/Controls/MyLoading.axaml" />
+        <StyleInclude Source="avares://PCL2.Neo/Styles/MyControlStyles.axaml" />
+        <StyleInclude Source="avares://PCL2.Neo/Styles/CustomStyles.axaml" />
 
-        <!--  TextBlock  -->
-        <Style Selector="TextBlock">
-            <Setter Property="FontSize" Value="13" />
-            <Setter Property="Foreground" Value="{DynamicResource ColorBrush1}" />
-            <Setter Property="FontFamily" Value="{StaticResource Pcl2English}" />
-        </Style>
     </Application.Styles>
-
-
 </Application>

@@ -54,8 +54,4 @@
   <ItemGroup>
     <None Include="G:\PCL2.Neo\PCL2.Neo\.editorconfig" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controls\MyMsg\" />
-  </ItemGroup>
 </Project>

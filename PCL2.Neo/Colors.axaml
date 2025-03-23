@@ -40,12 +40,16 @@
             <SolidColorBrush x:Key="ColorBrushRedBack">#80fbdddd</SolidColorBrush>
             <SolidColorBrush x:Key="ColorBrushRedLight">#ff4c4c</SolidColorBrush>
             <SolidColorBrush x:Key="ColorBrushRedDark">#ce2111</SolidColorBrush>
-            <SolidColorBrush Color="#55ffffff" x:Key="ColorBrushHalfWhite" />
-            <SolidColorBrush Color="#bbffffff" x:Key="ColorBrushSemiWhite" />
-            <SolidColorBrush Color="#ffffff" x:Key="ColorBrushWhite" />
-            <SolidColorBrush Color="#00ffffff" x:Key="ColorBrushTransparent" />
-            <SolidColorBrush Color="#01eaf2fe" x:Key="ColorBrushSemiTransparent" />
-            <SolidColorBrush Color="#d2ffffff" x:Key="ColorBrushBackgroundTransparentSidebar" />
+            <SolidColorBrush x:Key="ColorBrushHalfWhite">#55ffffff</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushSemiWhite">#bbffffff</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushWhite">#ffffff</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushTransparent">#00ffffff</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushSemiTransparent">#01eaf2fe</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushBackgroundTransparentSidebar">#d2ffffff</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushToolTip">#e5ffffff</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushMsgBox">#fbfbfb</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushMsgBoxText">#5c5c5c</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushMemory">#000000</SolidColorBrush>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
             <SolidColorBrush x:Key="ColorBrush1">#ebebeb</SolidColorBrush>
@@ -87,12 +91,16 @@
             <SolidColorBrush x:Key="ColorBrushRedBack">#80fbdddd</SolidColorBrush>
             <SolidColorBrush x:Key="ColorBrushRedLight">#ff4c4c</SolidColorBrush>
             <SolidColorBrush x:Key="ColorBrushRedDark">#ce2111</SolidColorBrush>
-            <SolidColorBrush Color="#555a5a5a" x:Key="ColorBrushHalfWhite" />
-            <SolidColorBrush Color="#bbffffff" x:Key="ColorBrushSemiWhite" />
-            <SolidColorBrush Color="#ffffff" x:Key="ColorBrushWhite" />
-            <SolidColorBrush Color="#00434343" x:Key="ColorBrushTransparent" />
-            <SolidColorBrush Color="#01eaf2fe" x:Key="ColorBrushSemiTransparent" />
-            <SolidColorBrush Color="#eb2b2b2b" x:Key="ColorBrushBackgroundTransparentSidebar" />
+            <SolidColorBrush x:Key="ColorBrushHalfWhite">#555a5a5a</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushSemiWhite">#bbffffff</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushWhite">#ffffff</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushTransparent">#00434343</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushSemiTransparent">#01eaf2fe</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushBackgroundTransparentSidebar">#eb2b2b2b</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushToolTip">#e5a5a5a</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushMsgBox">#2b2b2b</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushMsgBoxText">#ebebeb</SolidColorBrush>
+            <SolidColorBrush x:Key="ColorBrushMemory">#ffffff</SolidColorBrush>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>
